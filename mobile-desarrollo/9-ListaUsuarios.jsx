@@ -1,10 +1,10 @@
-import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import React from "react";
+import { View, Text, FlatList } from "react-native";
 
 const usuarios = [
-  { id: '1', nombre: 'Ana' },
-  { id: '2', nombre: 'Carlos' },
-  { id: '3', nombre: 'Lucía' },
+  { id: "1", nombre: "Ana" },
+  { id: "2", nombre: "Carlos" },
+  { id: "3", nombre: "Lucía" },
 ];
 
 export default function ListaUsuarios() {
@@ -15,6 +15,11 @@ export default function ListaUsuarios() {
           - Prop "keyExtractor": retorna el id de cada item
           - Prop "renderItem": muestra el nombre en un Text */}
       {/* tu código aquí */}
+      <FlatList
+        data={usuarios}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <Text>{item.nombre}</Text>}
+      />
     </View>
   );
 }
