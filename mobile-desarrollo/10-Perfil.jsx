@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { View, Text, ActivityIndicator } from "react-native";
 
 export default function Perfil() {
   const [usuario, setUsuario] = useState(null);
@@ -11,6 +11,16 @@ export default function Perfil() {
     // Guarda el resultado en "usuario" con setUsuario
     // y cambia "cargando" a false cuando finalice
     /* tu código aquí */
+    fetch("https://jsonplaceholder.typicode.com/users/1")
+      .then((response) => response.json())
+      .then((data) => {
+        setUsuario(data);
+        setCargando(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setCargando(false);
+      });
   }, []);
 
   if (cargando) return <ActivityIndicator />;
